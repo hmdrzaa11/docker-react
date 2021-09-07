@@ -1,0 +1,11 @@
+sudo: required #means we need super user permission
+
+services:
+  - docker #tell it to install docker because our project depends on it
+
+before_install:
+  - docker build -t hmdrzadev/docker-react -f Dockerfile.dev . #because we use travis to run tests and the "Dockerfile.dev" is responsible to run tests and remember to tag it
+
+script:
+  - docker run hmdrzadev/docker-react npm run test -- --coverage #because by default jest is not going to return and its going to give you a panel to work
+  #and travis wants to exit and see the status code so we add -- --coverage
