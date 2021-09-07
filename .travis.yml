@@ -9,3 +9,5 @@ before_install:
 script:
   - docker run hmdrzadev/docker-react npm run test -- --coverage --detectOpenHandles --forceExit #because by default jest is not going to return and its going to give you a panel to work
   #and travis wants to exit and see the status code so we add -- --coverage
+
+YARN_GPG=no
